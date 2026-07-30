@@ -1,0 +1,105 @@
+# =============================================================================
+# Application Configuration
+# =============================================================================
+spring.application.name=Fitness Tracker API
+server.port=8080
+server.servlet.context-path=/api/
+
+# =============================================================================
+# Database Configuration - MySQL
+# =============================================================================
+# spring.datasource.url=jdbc:mysql://localhost:3306/fitness_goal_management?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+spring.datasource.url=jdbc:mysql://localhost:3306/fitnessAndGoalManagement?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=XXXXXX
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Connection Pool Configuration
+spring.datasource.hikari.maximum-pool-size=20
+spring.datasource.hikari.minimum-idle=5
+spring.datasource.hikari.idle-timeout=300000
+spring.datasource.hikari.connection-timeout=20000
+spring.datasource.hikari.max-lifetime=1200000
+
+# =============================================================================
+# JPA/Hibernate Configuration
+# =============================================================================
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.properties.hibernate.jdbc.batch_size=25
+spring.jpa.properties.hibernate.order_inserts=true
+spring.jpa.properties.hibernate.order_updates=true
+spring.jpa.open-in-view=false
+
+# =============================================================================
+# JWT Configuration
+# =============================================================================
+jwt.secret=ThisIsAVerySecureJwtSecretKeyThatShouldBeAtLeast256BitsLongForHS256AlgorithmSecurity
+jwt.expiration=3600000
+jwt.refresh-expiration=86400000
+jwt.issuer=fitness-tracker
+
+# =============================================================================
+# Security Configuration
+# =============================================================================
+security.password.min-length=8
+security.password.require-uppercase=true
+security.password.require-lowercase=true
+security.password.require-digit=true
+
+# =============================================================================
+# Logging Configuration
+# =============================================================================
+logging.level.root=INFO
+logging.level.com.fitness.tracker=DEBUG
+logging.level.org.springframework.security=INFO
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+
+# Logging Pattern
+logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+
+# =============================================================================
+# Actuator Configuration (Optional)
+# =============================================================================
+management.endpoints.web.exposure.include=health,info,metrics
+management.endpoint.health.show-details=when-authorized
+
+# =============================================================================
+# Swagger/OpenAPI Configuration
+# =============================================================================
+springdoc.api-docs.path=/docs
+springdoc.swagger-ui.path=/swagger-ui.html
+springdoc.swagger-ui.operationsSorter=method
+springdoc.swagger-ui.tagsSorter=alpha
+
+# =============================================================================
+# File Upload Configuration (for future profile pictures)
+# =============================================================================
+spring.servlet.multipart.max-file-size=5MB
+spring.servlet.multipart.max-request-size=10MB
+
+# =============================================================================
+# API Ninjas Configuration
+# =============================================================================
+X-Api-Key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+api.ninjas.base-url=https://api.api-ninjas.com/v1/exercises
+
+# =============================================================================
+# Cache Configuration
+# =============================================================================
+spring.cache.type=simple
+
+# =============================================================================
+# Allow bean definition overriding (to resolve jpaAuditingHandler conflict)
+# =============================================================================
+spring.main.allow-bean-definition-overriding=true
+
+# =============================================================================
+# Default Admin User Configuration
+# =============================================================================
+app.admin.username=admin
+app.admin.email=admin@fitnesstracker.com
+app.admin.password=Admin@12345

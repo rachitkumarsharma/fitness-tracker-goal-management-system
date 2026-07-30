@@ -1,0 +1,1 @@
+-- Placeholder schema.sql to allow data initialization after Hibernate schema generation
