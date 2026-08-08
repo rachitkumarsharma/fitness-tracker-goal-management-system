@@ -54,32 +54,75 @@ const features = [
   },
   {
     name: "Role-Based Access Control",
-    description: "Different roles for users and admins with different permissions.",
+    description:
+      "Different roles for users and admins with different permissions.",
     icon: Users,
   },
 ];
 
 const technologies = {
   frontend: [
-    { name: "ReactJS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-    { name: "Vite", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" },
+    {
+      name: "ReactJS",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    },
+    {
+      name: "Vite",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
+    },
     {
       name: "Tailwind CSS",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+    },
+    {
+      name: "React Router",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouter/reactrouter-original.svg",
     },
   ],
+
   backend: [
-    { name: "Spring Boot", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
-    { name: "Spring Security", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
-    { name: "JWT", icon: ShieldCheck },
+    {
+      name: "Spring Boot",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
+    },
+    {
+      name: "Spring Security",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
+    },
+    {
+      name: "JWT",
+      icon: ShieldCheck,
+    },
+    {
+      name: "Maven",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg",
+    },
   ],
+
   database: [
-    { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+    {
+      name: "MySQL",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    },
   ],
+
   tools: [
-    { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-    { name: "GitHub", icon: Github },
-    { name: "Postman", icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" },
+    {
+      name: "Git",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    },
+    {
+      name: "GitHub",
+      icon: Github,
+    },
+    {
+      name: "Postman",
+      icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg",
+    },
+    {
+      name: "IntelliJ",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg",
+    },
   ],
 };
 
@@ -100,14 +143,20 @@ const team = [
     twitter: "https://twitter.com/RachitS2003",
   },
   {
-    name: "Member 2",
-    role: "Frontend Developer",
-    avatar: "https://i.pravatar.cc/150?u=member2",
+    name: "Shashank Gupta",
+    role: "Backend Developer",
+    avatar: "https://avatars.githubusercontent.com/u/83669144?v=4",
+    github: "https://github.com/rachit-sharma2003",
+    linkedin: "https://linkedin.com/in/rachit-sharma-2003",
+    twitter: "https://twitter.com/RachitS2003",
   },
   {
-    name: "Member 3",
-    role: "Backend Developer",
-    avatar: "https://i.pravatar.cc/150?u=member3",
+    name: "Shubhanshi Saw",
+    role: "Frontend Developer",
+    avatar: "https://avatars.githubusercontent.com/u/83669144?v=4",
+    github: "https://github.com/rachit-sharma2003",
+    linkedin: "https://linkedin.com/in/rachit-sharma-2003",
+    twitter: "https://twitter.com/RachitS2003",
   },
 ];
 
@@ -139,16 +188,49 @@ export function AboutPage() {
 
       {/* Features Section */}
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center">Features</h2>
-        <div className="mt-8 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold">Features</h2>
+
+          <p className="mt-2 text-slate-600 dark:text-slate-400">
+            Everything you need to stay on top of your fitness journey.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => (
             <div
               key={feature.name}
-              className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-md"
+              className="
+          group
+          p-6
+          bg-white
+          dark:bg-slate-800
+          rounded-2xl
+          shadow-md
+          border
+          transition-all
+          duration-300
+          hover:-translate-y-3
+          hover:shadow-2xl
+          hover:border-emerald-500
+          cursor-pointer
+        "
             >
-              <feature.icon className="w-8 h-8 text-emerald-500" />
+              <feature.icon
+                className="
+            w-8
+            h-8
+            text-emerald-500
+            transition-all
+            duration-300
+            group-hover:scale-125
+            group-hover:rotate-6
+          "
+              />
+
               <h3 className="mt-4 text-xl font-bold">{feature.name}</h3>
-              <p className="mt-2 text-slate-600 dark:text-slate-400">
+
+              <p className="mt-2 text-slate-600 dark:text-slate-400 text-sm">
                 {feature.description}
               </p>
             </div>
@@ -158,23 +240,64 @@ export function AboutPage() {
 
       {/* Technology Stack */}
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center">Technology Stack</h2>
-        <div className="mt-8 space-y-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold">Technology Stack</h2>
+
+          <p className="mt-2 text-slate-600 dark:text-slate-400">
+            Built using modern technologies for scalability, performance, and
+            security.
+          </p>
+        </div>
+
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
           {Object.entries(technologies).map(([category, techs]) => (
-            <div key={category}>
-              <h3 className="text-2xl font-semibold capitalize">{category}</h3>
-              <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div
+              key={category}
+              className="
+          bg-white
+          dark:bg-slate-800
+          rounded-2xl
+          shadow-lg
+          p-6
+          border
+          hover:shadow-xl
+          transition
+        "
+            >
+              <h3 className="text-xl font-bold capitalize text-emerald-600 mb-6">
+                {category}
+              </h3>
+
+              <div className="grid grid-cols-2 gap-4">
                 {techs.map((tech) => (
                   <div
                     key={tech.name}
-                    className="flex items-center space-x-4 p-4 bg-white dark:bg-slate-800 rounded-lg shadow-md"
+                    className="
+                flex
+                flex-col
+                items-center
+                justify-center
+                p-4
+                rounded-xl
+                border
+                hover:-translate-y-1
+                hover:shadow-md
+                transition-all
+              "
                   >
                     {typeof tech.icon === "string" ? (
-                      <img src={tech.icon} alt={tech.name} className="w-8 h-8" />
+                      <img
+                        src={tech.icon}
+                        alt={tech.name}
+                        className="w-10 h-10"
+                      />
                     ) : (
-                      <tech.icon className="w-8 h-8 text-emerald-500" />
+                      <tech.icon className="w-10 h-10 text-emerald-500" />
                     )}
-                    <span className="font-semibold">{tech.name}</span>
+
+                    <span className="mt-2 text-sm font-medium text-center">
+                      {tech.name}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -188,8 +311,13 @@ export function AboutPage() {
         <h2 className="text-3xl font-bold text-center">Statistics</h2>
         <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           {stats.map((stat) => (
-            <div key={stat.label} className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-md">
-              <p className="text-4xl font-extrabold text-emerald-500">{stat.value}</p>
+            <div
+              key={stat.label}
+              className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-md"
+            >
+              <p className="text-4xl font-extrabold text-emerald-500">
+                {stat.value}
+              </p>
               <p className="mt-2 text-lg font-medium text-slate-600 dark:text-slate-400">
                 {stat.label}
               </p>
@@ -197,7 +325,7 @@ export function AboutPage() {
           ))}
         </div>
       </div>
-      
+
       {/* Team Section */}
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center">Our Team</h2>
@@ -208,19 +336,90 @@ export function AboutPage() {
           {team.map((member) => (
             <div
               key={member.name}
-              className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-md text-center"
+              className="
+    group
+    p-6
+    bg-white
+    dark:bg-slate-800
+    rounded-2xl
+    shadow-md
+    border
+    text-center
+    transition-all
+    duration-300
+    hover:-translate-y-3
+    hover:shadow-2xl
+    hover:border-emerald-500
+  "
             >
               <img
                 src={member.avatar}
                 alt={member.name}
-                className="w-24 h-24 rounded-full mx-auto"
+                className="
+      w-24
+      h-24
+      rounded-full
+      mx-auto
+      border-4
+      border-emerald-100
+      transition-all
+      duration-300
+      group-hover:scale-110
+      group-hover:rotate-3
+    "
               />
+
               <h3 className="mt-4 text-xl font-bold">{member.name}</h3>
-              <p className="text-slate-600 dark:text-slate-400">{member.role}</p>
+
+              <p className="text-slate-600 dark:text-slate-400">
+                {member.role}
+              </p>
+
               <div className="mt-4 flex justify-center space-x-4">
-                {member.github && <a href={member.github} target="_blank" rel="noreferrer"><Github /></a>}
-                {member.linkedin && <a href={member.linkedin} target="_blank" rel="noreferrer"><Linkedin /></a>}
-                {member.twitter && <a href={member.twitter} target="_blank" rel="noreferrer"><Twitter /></a>}
+                {member.github && (
+                  <a
+                    href={member.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="
+          transition
+          hover:text-emerald-500
+          hover:scale-125
+        "
+                  >
+                    <Github />
+                  </a>
+                )}
+
+                {member.linkedin && (
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="
+          transition
+          hover:text-emerald-500
+          hover:scale-125
+        "
+                  >
+                    <Linkedin />
+                  </a>
+                )}
+
+                {member.twitter && (
+                  <a
+                    href={member.twitter}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="
+          transition
+          hover:text-emerald-500
+          hover:scale-125
+        "
+                  >
+                    <Twitter />
+                  </a>
+                )}
               </div>
             </div>
           ))}

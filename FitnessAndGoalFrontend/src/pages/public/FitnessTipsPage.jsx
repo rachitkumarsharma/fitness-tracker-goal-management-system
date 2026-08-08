@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { FitnessTipCard } from "../../components/shared/FitnessTipCard";
 import { WaterTracker } from "../../components/shared/WaterTracker";
+import { BMIWidget } from "../../components/shared/BMIWidget";
 import { RefreshCw } from "lucide-react";
 
 const tipsData = [
@@ -63,51 +64,144 @@ export function FitnessTipsPage() {
   };
 
   return (
-    <div className="space-y-8">
-      <div className="text-center space-y-4 pt-16">
-        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
+    <div className="max-w-6xl mx-auto px-4 space-y-8">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl py-6 px-4 text-center text-white shadow-md">
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
           Fitness Tips
         </h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">
-          Daily advice to help you on your fitness journey.
+
+        <p className="mt-1 text-sm md:text-base text-emerald-50">
+          Daily advice to support your fitness journey.
         </p>
-      </div>
+      </section>
 
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="mb-8 p-6 bg-white dark:bg-slate-800 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold mb-4">Daily Tip</h2>
-          <FitnessTipCard tip={randomTip} />
-          <button
-            onClick={generateRandomTip}
-            className="mt-4 px-4 py-2 bg-emerald-600 text-white font-semibold rounded-lg shadow-md hover:bg-emerald-700 flex items-center"
+      <div className="max-w-6xl mx-auto px-4 space-y-16">
+        {/* Daily Tip */}
+        <section>
+          <div
+            className="
+      bg-gradient-to-r
+      from-emerald-50
+      to-teal-50
+      dark:from-slate-800
+      dark:to-slate-900
+      rounded-2xl
+      shadow-md
+      p-5
+      border
+    "
           >
-            <RefreshCw className="w-4 h-4 mr-2" />
-            New Tip
-          </button>
-        </div>
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-4">
+              <div>
+                <h2 className="text-xl font-bold flex items-center gap-2">
+                  💡 Daily Tip
+                </h2>
 
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
-          <select
-            className="p-2 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm dark:bg-slate-700"
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="All">All Categories</option>
-            <option value="Nutrition">Nutrition</option>
-            <option value="Exercise">Exercise</option>
-            <option value="Recovery">Recovery</option>
-            <option value="Motivation">Motivation</option>
-          </select>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredTips.map((tip, index) => (
-            <FitnessTipCard key={index} tip={tip} />
-          ))}
-        </div>
-      </div>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                  Small habits create big changes.
+                </p>
+              </div>
 
-      {/* Water Intake Tracker Widget */}
-      <div className="max-w-md mx-auto mt-16">
-        <WaterTracker />
+              <button
+                onClick={generateRandomTip}
+                className="
+          flex items-center gap-2
+          px-4 py-2
+          bg-emerald-600
+          text-white
+          text-sm
+          rounded-lg
+          hover:bg-emerald-700
+          transition
+        "
+              >
+                <RefreshCw className="w-4 h-4" />
+                New Tip
+              </button>
+            </div>
+
+            <FitnessTipCard tip={randomTip} />
+          </div>
+        </section>
+
+        {/* Health Insights */}
+        <section>
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold">Health Insights</h2>
+
+            <p className="text-slate-500 dark:text-slate-400 mt-2">
+              Monitor hydration levels and body health metrics.
+            </p>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-8 items-start">
+            <div className="flex-1 w-full">
+              <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-lg p-6">
+                <WaterTracker />
+              </div>
+            </div>
+
+            <div className="flex-1 w-full">
+              <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-lg p-6">
+                <BMIWidget />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Filter Section */}
+        <section>
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold">Explore Tips</h2>
+
+            <p className="text-slate-500 dark:text-slate-400 mt-2">
+              Filter fitness tips by category.
+            </p>
+          </div>
+
+          <div className="flex justify-center mb-10">
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="
+              w-full
+              md:w-72
+              px-4
+              py-3
+              rounded-xl
+              border
+              border-slate-300
+              dark:border-slate-600
+              shadow-md
+              dark:bg-slate-800
+            "
+            >
+              <option value="All">All Categories</option>
+              <option value="Nutrition">Nutrition</option>
+              <option value="Exercise">Exercise</option>
+              <option value="Recovery">Recovery</option>
+              <option value="Motivation">Motivation</option>
+            </select>
+          </div>
+
+          {/* Tips Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredTips.map((tip, index) => (
+              <div
+                key={index}
+                className="
+                transition-all
+                duration-300
+                hover:-translate-y-2
+                hover:shadow-xl
+              "
+              >
+                <FitnessTipCard tip={tip} />
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

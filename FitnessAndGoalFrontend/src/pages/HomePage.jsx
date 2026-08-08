@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth, useTheme } from "../context";
 import { Button } from "../components";
 import { Dumbbell } from "lucide-react";
+import { Navbar } from "../components/layout";
 
 const noop = () => {};
 
@@ -32,8 +33,8 @@ export function HomePage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-200">
-      <PublicHeader />
-
+      <Navbar />
+      
       {/* Hero */}
       <section className="relative overflow-hidden pt-24 pb-14 sm:pb-20">
         <div className="absolute inset-0 -z-10">
@@ -328,144 +329,6 @@ export function HomePage() {
       {/* Footer */}
       <FooterTop />
     </div>
-  );
-}
-
-function PublicHeader() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const { isDark, toggleTheme } = useTheme();
-
-  const linkClass =
-    "px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 transition-fast";
-
-  const handleNav = (path) => {
-    setMobileOpen(false);
-    if (path === "/") {
-      navigateToAnchor("features");
-    }
-  };
-
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-              <Dumbbell className="w-6 h-6 text-white" />
-            </div>
-            <span className="font-bold text-lg text-slate-900 dark:text-slate-100 hidden sm:block">
-              FitTracker
-            </span>
-          </Link>
-
-          <nav className="hidden md:flex items-center gap-1">
-            <Link to="/" className={linkClass}>
-              Home
-            </Link>
-            <Link to="/exercises" className={linkClass}>
-              Exercises
-            </Link>
-            <Link to="/healthy-food" className={linkClass}>
-              Healthy Food
-            </Link>
-            <Link to="/fitness-tips" className={linkClass}>
-              Fitness Tips
-            </Link>
-            <Link to="/about" className={linkClass}>
-              About
-            </Link>
-            <Link to="/contact" className={linkClass}>
-              Contact
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className="hidden sm:inline-flex items-center px-3 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-fast"
-              aria-label="Toggle dark mode"
-            >
-              {isDark ? "🌙" : "☀️"}
-            </button>
-
-            <div className="hidden sm:flex items-center gap-2">
-              <Button asChild variant="outline">
-                <Link to="/login">Login</Link>
-              </Button>
-              <Button asChild variant="solid">
-                <Link to="/register">Register</Link>
-              </Button>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setMobileOpen((v) => !v)}
-              className="md:hidden p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800"
-              aria-label="Open menu"
-            >
-              {mobileOpen ? <X /> : <Menu />}
-            </button>
-          </div>
-        </div>
-
-        {mobileOpen && (
-          <div className="md:hidden pb-4">
-            <div className="flex flex-col gap-2 pt-3">
-              <Link
-                to="/"
-                className="px-3 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800"
-              >
-                Home
-              </Link>
-              <Link
-                to="/exercises"
-                className="px-3 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800"
-              >
-                Exercises
-              </Link>
-              <Link
-                to="/healthy-food"
-                className="px-3 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800"
-              >
-                Healthy Food
-              </Link>
-              <Link
-                to="/fitness-tips"
-                className="px-3 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800"
-              >
-                Fitness Tips
-              </Link>
-              <Link
-                to="/about"
-                className="px-3 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800"
-              >
-                About
-              </Link>
-              <Link
-                to="/contact"
-                className="px-3 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800"
-              >
-                Contact
-              </Link>
-
-              <div className="pt-2 flex flex-col sm:flex-row gap-2">
-                <Button asChild variant="outline">
-                  <Link to="/login" onClick={() => setMobileOpen(false)}>
-                    Login
-                  </Link>
-                </Button>
-                <Button asChild variant="solid">
-                  <Link to="/register" onClick={() => setMobileOpen(false)}>
-                    Register
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    </header>
   );
 }
 

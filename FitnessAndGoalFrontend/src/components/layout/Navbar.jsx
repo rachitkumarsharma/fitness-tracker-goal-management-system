@@ -79,11 +79,34 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-8">
-              <Link to={logoPath} className="flex items-center space-x-2">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-sm">
-                  <Dumbbell className="w-6 h-6 text-white" />
+              <Link to="/" className="group flex items-center gap-2">
+                <div className="relative">
+                  <div className="absolute inset-0 rounded-full bg-emerald-400 opacity-20 animate-ping" />
+
+                  <div
+                    className="
+      relative w-10 h-10 rounded-xl
+      bg-gradient-to-br from-emerald-500 to-teal-600
+      flex items-center justify-center
+      shadow-[0_0_20px_rgba(16,185,129,0.5)]
+      animate-[float_3s_ease-in-out_infinite]
+      group-hover:scale-110
+      transition-all duration-300
+    "
+                  >
+                    <Dumbbell className="w-6 h-6 text-white group-hover:rotate-12" />
+                  </div>
                 </div>
-                <span className="font-bold text-lg text-slate-800 dark:text-slate-100">
+
+                <span
+                  className="
+    font-bold text-lg
+    bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500
+    bg-[length:200%]
+    animate-[shine_3s_linear_infinite]
+    bg-clip-text text-transparent
+  "
+                >
                   FitTracker
                 </span>
               </Link>
@@ -118,7 +141,7 @@ export function Navbar() {
               <button
                 onClick={toggleTheme}
                 type="button"
-                className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:rotate-180 hover:scale-110 transition-all duration-500"
                 title={isDark ? "Switch to light mode" : "Switch to dark mode"}
                 aria-label="Toggle dark mode"
               >
@@ -133,9 +156,9 @@ export function Navbar() {
                 <div className="relative">
                   <button
                     onClick={() => setUserMenuOpen(!userMenuOpen)}
-                    className="flex items-center space-x-2 px-3 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                    className=" group flex items-center space-x-2 px-3 py-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 hover:shadow-md transition-all duration-300"
                   >
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center transition-all duration-300 group-hover:ring-4 group-hover:ring-emerald-300">
                       <span className="text-white font-semibold text-sm">
                         {(profile?.full_name || user?.email || "U")
                           .charAt(0)
@@ -175,7 +198,11 @@ export function Navbar() {
                 </div>
               ) : (
                 <div className="flex items-center space-x-2">
-                  <Link to="/login">
+                  <Link
+                    to="/login"
+                    className="group relative overflow-hidden rounded-xl"
+                  >
+                    <div className="absolute top-0 -left-full h-full w-full bg-white/30 skew-x-12 group-hover:left-full transition-all duration-700" />
                     <Button
                       variant={isActive("/login") ? "primary" : "ghost"}
                       size="sm"
@@ -183,7 +210,11 @@ export function Navbar() {
                       Sign In
                     </Button>
                   </Link>
-                  <Link to="/register">
+                  <Link
+                    to="/register"
+                    className="group relative overflow-hidden rounded-xl"
+                  >
+                    <div className="absolute top-0 -left-full h-full w-full bg-white/20 skew-x-12 group-hover:left-full transition-all duration-700" />
                     <Button
                       variant={isActive("/register") ? "primary" : "outline"}
                       size="sm"
